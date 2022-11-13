@@ -1,3 +1,4 @@
+naresh
 ![Jupyter Notebook](https://img.shields.io/badge/jupyter-%23FA0F00.svg?style=for-the-badge&logo=jupyter&logoColor=white)
 
 # Operationalizing Machine Learning
@@ -46,6 +47,9 @@ At this point, security is enabled and authentication is completed. This step in
 
 - **Deploy the Best Model:**
 After the completion of the experiment run, a summary of all the models and their metrics are shown, including explanations. The _Best Model_ will appear in the _Details_ tab, while it will appear first in the _Models_ tab. This is the model that should be selected for deployment. Its deployment allows to interact with the HTTP API service and interact with the model by sending data over POST requests.
+
+- **Enable Logging:**
+After the deployment of the Best Model, I enabled Application Insights and retrieve logs.
 
 
 - **Swagger Documentation:**
@@ -117,6 +121,30 @@ First, I choose the best model i.e. the first model at the top in the _Models_ t
 
 Deploying the best model will allow us to interact with the HTTP API service and interact with the model by sending data over POST requests.
 
+
+### **Step 4: Enable Application Insights**
+
+After the deployment of the best model, I can enable _Application Insights_ and be able to retrieve logs:
+
+**"Application Insights" enabled in the Details tab of the endpoint**
+
+!["Application Insights" enabled](img/app_insight.PNG?raw=true "'Application Insights' enabled")
+
+Screenshot of the tab running "Application Insights":
+
+!["Application Insights" graphs](img/app_insight1.PNG?raw=true "'Application Insights' graphs")
+
+!["Application Insights" graphs](img/app_insight2.PNG?raw=true "'Application Insights' graphs")
+We can see _Failed requests_, _Server response time_, _Server requests_ & _Availability_ graphs in real time.
+
+
+**Running logs.py script**
+
+Although we can enable _Application Insights_ at deploy time with a check-box, it is useful to be able to run code that will enable it for us. For this reason, I run the _logs.py_ Python file, where I put in _name_ the name of the deployed model (_best-model2_) and I add the line `service.update(enable_app_insights=True)`: 
+
+![Running logs.py script](img/logpython.PNG?raw=true "Running logs.py script")
+![Running logs.py script](img/logpy.PNG?raw=true "Result")
+
 ### **Step 5: Swagger Documentation**
 
 **Swagger** is a set of open-source tools built around the OpenAPI Specification that can help us design, build, document and consume REST APIs. One of the major tools of Swagger is **Swagger UI**, which is used to generate interactive API documentation that lets the users try out the API calls directly in the browser.
@@ -159,11 +187,11 @@ The purpose of this step is to create, publish and consume a pipeline using the 
 ![In ML Studio](img/pipeline2.PNG?raw=true "In ML Studio")
 
 ![In ML Studio](img/pipeline_publish.PNG?raw=true "In ML Studio")
-
-
-
+![In ML Studio](img/publish_pipeline.PNG?raw=true "In ML Studio")
+![In ML Studio](img/publish_run_from_restendpoint.PNG?raw=true "In ML Studio")
+![In ML Studio](img/run_widget.PNG?raw=true "In ML Studio")
 ***
-## Screen Recording
+## Screen Recording Description
 
 The screen recording can be found [here](https://www.youtube.com/watch?v=d9YQ0UfiH18) and it shows the project in action. More specifically, the screencast demonstrates:
 
